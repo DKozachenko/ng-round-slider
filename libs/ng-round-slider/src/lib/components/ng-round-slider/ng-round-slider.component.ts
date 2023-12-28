@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
 import * as $ from 'jquery';
 import 'round-slider';
 import { DEFAULT_PROPERTIES_OPTIONS } from '../../models/constants';
-import { IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '../../models/interfaces';
+import { IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderOptions, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '../../models/interfaces';
 import { IBaseEventData } from '../../models/interfaces/base-event-data.interface';
 import { SliderId, SliderPropertyValue } from '../../models/types';
 
@@ -12,11 +12,18 @@ import { SliderId, SliderPropertyValue } from '../../models/types';
   selector: 'ng-round-slider',
   standalone: true,
   templateUrl: './ng-round-slider.component.html',
-  styleUrl: './ng-round-slider.component.scss'
+  styleUrl: './ng-round-slider.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   public id!: SliderId;
 
+  /**
+   * Enables or disables the handle movement animation.
+   *
+   * As the control uses the CSS3 animation, so you can use any CSS3 transition effects to customize the animation type and speed. To know how to use custom animation check here {@link https://roundsliderui.com/demos.html#custom-animation here}.
+   */
+  @Input({ required: false }) public animation: ISliderOptions['animation'] = DEFAULT_PROPERTIES_OPTIONS['animation'];
   @Input({ required: false }) public value?: number = undefined;
 
   /**
@@ -67,11 +74,13 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges,
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    console.warn(this.animation, 'anit')
     this.updateProperty('value', changes['value'].currentValue);
   }
 
   private init(): void {
     this.sliderElement.roundSlider({
+      animation: this.animation ?? DEFAULT_PROPERTIES_OPTIONS['animation'],
       min: 0,
       max: 100,
       step: 1,
@@ -81,7 +90,6 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges,
       handleSize: "+0",
       startAngle: 0,
       endAngle: "+360",
-      animation: true,
       showTooltip: true,
       editableTooltip: true,
       readOnly: false,
