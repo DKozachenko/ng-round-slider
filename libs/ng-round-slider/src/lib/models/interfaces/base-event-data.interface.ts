@@ -2,10 +2,12 @@ import { SliderId } from '../types';
 import { ISliderElement } from './slider-element.interface';
 import { ISliderOptions } from './slider-options.interface';
 
-export interface IBeforeCreateData {
-  control: ISliderElement[],
+export interface IBaseEventData<T> {
+  control: {
+    0: ISliderElement
+  },
   id: SliderId,
-  type: 'beforeCreate',
+  type: T,
   options: ISliderOptions,
   value: ISliderOptions['value']
 }

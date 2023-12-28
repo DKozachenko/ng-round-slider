@@ -2,7 +2,8 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Outpu
 import * as $ from 'jquery';
 import 'round-slider';
 import { DEFAULT_PROPERTIES_OPTIONS, SLIDER_ID } from '../../models/constants';
-import { IBeforeCreateData, ISliderControl, ISliderElement, ISliderProperties } from '../../models/interfaces';
+import { IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '../../models/interfaces';
+import { IBaseEventData } from '../../models/interfaces/base-event-data.interface';
 
 //TODO: может дропнуть файлы стилей и шаблона, тк там ничего нет?
 @Component({
@@ -19,7 +20,31 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges 
    *
    * At this point we can change the control's settings. And also this event can be cancellable, so we can prevent the control creation by 'return false'.
    */
-  @Output() public beforeCreate: EventEmitter<IBeforeCreateData> = new EventEmitter<IBeforeCreateData>();
+  @Output() public readonly beforeCreate: EventEmitter<IBaseEventData<'beforeCreate'>> = new EventEmitter<IBaseEventData<'beforeCreate'>>();
+  /** This event triggered after the control creation or initialization. */
+  @Output() public readonly create: EventEmitter<IBaseEventData<'create'>> = new EventEmitter<IBaseEventData<'create'>>();
+  /** This event triggered when the user starts to drag the handle. */
+  @Output() public readonly start: EventEmitter<IBaseMoveEventData<'start'>> = new EventEmitter<IBaseMoveEventData<'start'>>();
+  /** This event triggered when the user stops from sliding the handle / when releasing the handle. */
+  @Output() public readonly stop: EventEmitter<IBaseMoveEventData<'stop'>> = new EventEmitter<IBaseMoveEventData<'stop'>>();
+  /**
+   * This event will be triggered before the value change happens.
+   *
+   * And this event can be cancellable. So whenever you want to restrict the slider for particular values at that time this will be useful.
+   */
+  @Output() public readonly beforeValueChange: EventEmitter<IBeforeValueChangeEventData> = new EventEmitter<IBeforeValueChangeEventData>();
+  /** This event triggered when the user moving the handle. On each mouse move the drag event will trigger. */
+  @Output() public readonly drag: EventEmitter<IBaseHandleEventData<'drag'>> = new EventEmitter<IBaseHandleEventData<'drag'>>();
+  /** This event triggered when the slider's value gets change. */
+  @Output() public readonly change: EventEmitter<IBaseHandleEventData<'change'>> = new EventEmitter<IBaseHandleEventData<'change'>>();
+  /**
+   * This event is the combination of 'drag' and 'change' events.
+   *
+   * Simply, whenever the slider value gets updated through the user interaction at that time it will be triggered.
+   */
+  @Output() public readonly update: EventEmitter<IUpdateEventData> = new EventEmitter<IUpdateEventData>();
+  /** This event is similar to 'update' event, in addition it will trigger even the value was changed through programmatically also. */
+  @Output() public readonly valueChange: EventEmitter<IValueChangeEventData> = new EventEmitter<IValueChangeEventData>();
 
   private get sliderElement(): ISliderElement {
     return $(`#${SLIDER_ID}`) as ISliderElement;
@@ -34,7 +59,7 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges 
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    this.update('value', changes['value'].currentValue);
+    this.updateProperty('value', changes['value'].currentValue);
   }
 
   private init(): void {
@@ -60,12 +85,8 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges 
       handleShape: "round",
       lineCap: "butt",
 
-      // the 'startValue' property decides at which point the slider should start.
-      // otherwise, by default the slider starts with min value. this is mainly used
-      // for min-range slider, where you can customize the min-range start position.
       startValue: null,
 
-      // SVG related properties
       svgMode: false,
       borderWidth: 1,
       borderColor: null,
@@ -73,25 +94,20 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges 
       rangeColor: null,
       tooltipColor: null,
 
-      // // events
-      beforeCreate: (data: IBeforeCreateData) => this.beforeCreate.emit(data),
-      // create: undefined,
-      // start: undefined,
-      // // 'beforeValueChange' will be triggered before 'valueChange', and it can be cancellable
-      // beforeValueChange: undefined,
-      // drag: undefined,
-      // change: undefined,
-      // // 'update' event is the combination of 'drag' and 'change'
-      // update: undefined,
-      // // 'valueChange' event is similar to 'update' event, in addition it will trigger
-      // // even the value was changed through programmatically also.
-      // valueChange: undefined,
-      // stop: undefined,
-      // tooltipFormat: undefined
+      beforeCreate: (data: IBaseEventData<'beforeCreate'>) => this.beforeCreate.emit(data),
+      create: (data: IBaseEventData<'create'>) => this.create.emit(data),
+      start: (data: IBaseMoveEventData<'start'>) => this.start.emit(data),
+      stop: (data: IBaseMoveEventData<'stop'>) => this.stop.emit(data),
+      beforeValueChange: (data: IBeforeValueChangeEventData) => this.beforeValueChange.emit(data),
+      drag: (data: IBaseHandleEventData<'drag'>) => this.drag.emit(data),
+      change: (data: IBaseHandleEventData<'change'>) => this.change.emit(data),
+      update: (data: IUpdateEventData) => this.update.emit(data),
+      valueChange: (data: IValueChangeEventData) => this.valueChange.emit(data),
+      tooltipFormat: () => {}
     });
   }
 
-  public update(property: keyof ISliderProperties, value: any): void {
+  public updateProperty(property: keyof ISliderProperties, value: any): void {
     const control: ISliderControl | undefined = this.sliderControl;
 
     if (!control) {
