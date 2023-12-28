@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { v4 as uuidv4 } from 'uuid';
 import * as $ from 'jquery';
 import 'round-slider';
-import { DEFAULT_PROPERTIES_OPTIONS, SLIDER_ID } from '../../models/constants';
+import { DEFAULT_PROPERTIES_OPTIONS } from '../../models/constants';
 import { IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '../../models/interfaces';
 import { IBaseEventData } from '../../models/interfaces/base-event-data.interface';
+import { SliderId, SliderPropertyValue } from '../../models/types';
 
 //TODO: может дропнуть файлы стилей и шаблона, тк там ничего нет?
 @Component({
@@ -12,7 +14,9 @@ import { IBaseEventData } from '../../models/interfaces/base-event-data.interfac
   templateUrl: './ng-round-slider.component.html',
   styleUrl: './ng-round-slider.component.scss'
 })
-export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges {
+export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+  public id!: SliderId;
+
   @Input({ required: false }) public value?: number = undefined;
 
   /**
@@ -47,7 +51,7 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges 
   @Output() public readonly valueChange: EventEmitter<IValueChangeEventData> = new EventEmitter<IValueChangeEventData>();
 
   private get sliderElement(): ISliderElement {
-    return $(`#${SLIDER_ID}`) as ISliderElement;
+    return $(`#${this.id}`) as ISliderElement;
   }
 
   private get sliderControl(): ISliderControl | undefined {
@@ -55,7 +59,11 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges 
   }
 
   public ngOnInit(): void {
-    console.warn('test');
+    this.id = `round-slider-${uuidv4()}`;
+
+    // setTimeout(() => {
+    //   this.destroy();
+    // }, 5000)
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -107,7 +115,12 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges 
     });
   }
 
-  public updateProperty(property: keyof ISliderProperties, value: any): void {
+  public ngAfterViewInit(): void {
+    // TODO: run in ngOnInit
+    this.init();
+  }
+
+  public updateProperty(property: keyof ISliderProperties, value: SliderPropertyValue): void {
     const control: ISliderControl | undefined = this.sliderControl;
 
     if (!control) {
@@ -117,6 +130,13 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges 
     control.option(property, value);
   }
 
+  /**
+   * This method is used to set the value to the slider control.
+   *
+   * Note : This method accepts the following possible parameters.
+   * * **setValue(value)** : This will set the corresponding value to the slider handle.
+   * * **setValue(value, index)** : This is only applicable for range slider, which sets the value to the corresponding handle.Here the possible value of index is 1 or 2 only.
+   */
   public setValue(value: number | string, index?: number): void {
     const control: ISliderControl | undefined = this.sliderControl;
 
@@ -127,10 +147,88 @@ export class NgRoundSliderComponent implements OnInit, AfterViewInit, OnChanges 
     control.setValue(value, index);
   }
 
+  /**
+   * This method is used to get the value from the slider control.
+   *
+   * Note : This method accepts the following possible parameters.
+   * * **getValue()** : Without any parameter, it will return the current slider value.
+   * * **getValue(index)** : This is only applicable for range slider, which returns the value of the corresponding handle. Here the possible value of index is 1 or 2 only.
+   */
+  public getValue(index?: number): void {
+    const control: ISliderControl | undefined = this.sliderControl;
 
+    if (!control) {
+      return;
+    }
 
-  public ngAfterViewInit(): void {
-    // TODO: run in ngOnInit
-    this.init();
+    control.getValue(index);
+  }
+
+  /**
+   * This method is used to refresh the tooltip position, when it is misaligned.
+   *
+   * Mostly when you render the slider at 'display: none' mode then the tooltip may misaligned. At this point, if needed then you can refresh the tooltip once when the slider become 'display: block'.
+   *
+   * Hint :
+   * * More likely, with the above mentioned situation, when you are using tooltip as custom template then only you may need to think about this.
+   * Rest of the times you don't need to worry about this.
+   */
+  public refreshTooltip(): void {
+    const control: ISliderControl | undefined = this.sliderControl;
+
+    if (!control) {
+      return;
+    }
+
+    control.refreshTooltip();
+  }
+
+  /**
+   * Disables the slider control.
+   *
+   * Note : This method does not accept any parameters.
+   */
+  public disable(): void {
+    const control: ISliderControl | undefined = this.sliderControl;
+
+    if (!control) {
+      return;
+    }
+
+    control.disable();
+  }
+
+  /**
+   * Enables the slider control.
+   *
+   * Note : This method does not accept any parameters.
+   */
+  public enable(): void {
+    const control: ISliderControl | undefined = this.sliderControl;
+
+    if (!control) {
+      return;
+    }
+
+    control.enable();
+  }
+
+  /**
+   * Destroys the slider control and reverts the control element to the initial state.
+   *
+   * Note : This method does not accept any parameters.
+   */
+  public destroy(): void {
+    const control: ISliderControl | undefined = this.sliderControl;
+
+    if (!control) {
+      return;
+    }
+
+    control.destroy();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy();
   }
 }

@@ -1,1 +1,1 @@
-export type SliderId = 'round-slider';
+export type SliderId = `round-slider-${string}`;
