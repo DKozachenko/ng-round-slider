@@ -20,7 +20,8 @@
           "tsConfig": "libs/ng-round-slider/tsconfig.lib.json"
         }
       },
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "production",
+      "styles": ["node_modules/round-slider/dist/roundslider.min.css"]
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -32,6 +33,48 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "libs/ng-round-slider/.storybook",
+        "browserTarget": "ng-round-slider:build-storybook",
+        "compodoc": false,
+        "styles": ["node_modules/round-slider/dist/roundslider.min.css"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/ng-round-slider",
+        "configDir": "libs/ng-round-slider/.storybook",
+        "browserTarget": "ng-round-slider:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "ng-round-slider:build-storybook",
+        "staticFilePath": "dist/storybook/ng-round-slider"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "ng-round-slider:build-storybook:ci"
+        }
+      }
     }
   }
 }
