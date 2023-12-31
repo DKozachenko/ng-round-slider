@@ -3,7 +3,7 @@ import { ISliderOptions } from './slider-options.interface';
 import { ISliderProperties } from './slider-properties.interface';
 
 export interface ISliderControl {
-  option: (property: keyof ISliderProperties, value: SliderPropertyValue) => void,
+  option: (property: keyof ISliderProperties, value?: SliderPropertyValue) => void | SliderPropertyValue,
   /**
    * This method is used to set the value to the slider control.
    *
