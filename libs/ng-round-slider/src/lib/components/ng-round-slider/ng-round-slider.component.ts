@@ -2,17 +2,15 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input,
 import { v4 as uuidv4 } from 'uuid';
 import * as $ from 'jquery';
 import 'round-slider';
-import { DEFAULT_PROPERTIES_OPTIONS } from '../../models/constants';
-import { IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderOptions, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '../../models/interfaces';
-import { IBaseEventData } from '../../models/interfaces';
-import { SliderId, SliderPropertyValue } from '../../models/types';
+import { DEFAULT_PROPERTIES_OPTIONS } from '@ng-round-slider/lib/models/constants';
+import { IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderOptions, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '@ng-round-slider/lib/models/interfaces';
+import { IBaseEventData } from '@ng-round-slider/lib/models/interfaces';
+import { SliderId, SliderPropertyValue } from '@ng-round-slider/lib/models/types';
 
-//TODO: может дропнуть файлы стилей и шаблона, тк там ничего нет?
 @Component({
   selector: 'ng-round-slider',
   standalone: true,
-  templateUrl: './ng-round-slider.component.html',
-  styleUrl: './ng-round-slider.component.scss',
+  template: '<div [id]="id"></div>',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgRoundSliderComponent implements ISliderProperties, OnInit, AfterViewInit, OnChanges, OnDestroy {

@@ -7,14 +7,13 @@ import {
   IBeforeValueChangeEventData,
   IUpdateEventData,
   IValueChangeEventData,
-} from '../../models/interfaces';
-import { DEFAULT_PROPERTIES_OPTIONS } from '../../models/constants';
-import { NgRoundSliderComponent } from './ng-round-slider.component';
+} from '@ng-round-slider/lib/models/interfaces';
+import { DEFAULT_PROPERTIES_OPTIONS } from '@ng-round-slider/lib/models/constants';
+import { NgRoundSliderComponent } from '../ng-round-slider.component';
 
 const meta: Meta<NgRoundSliderComponent> = {
   component: NgRoundSliderComponent,
   title: 'NgRoundSliderComponent',
-  tags: ['autodocs'],
   args: {
     animation: DEFAULT_PROPERTIES_OPTIONS['animation'],
     width: DEFAULT_PROPERTIES_OPTIONS['width'],
@@ -339,18 +338,12 @@ const meta: Meta<NgRoundSliderComponent> = {
       },
     },
   },
-  parameters: {
-    docs: {
-      description: {
-        component: 'Another description, overriding the comments',
-      },
-    },
-  },
 };
 export default meta;
 type Story = StoryObj<NgRoundSliderComponent>;
 
 export const Primary: Story = {
+  name: 'Primary',
   render: (args) => ({
     props: {
       ...args,
