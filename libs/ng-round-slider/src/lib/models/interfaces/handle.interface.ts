@@ -1,5 +1,6 @@
 import { ISliderProperties } from './slider-properties.interface'
 
+/** Handle */
 export interface IHandle {
   angle: number,
   element: {

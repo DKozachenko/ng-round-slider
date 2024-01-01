@@ -1,5 +1,6 @@
 import { CircleShape, HandleShape, LineCap, SliderType } from '../types';
 
+/** Slider properties */
 export interface ISliderProperties {
   /**
    * Enables or disables the handle movement animation.

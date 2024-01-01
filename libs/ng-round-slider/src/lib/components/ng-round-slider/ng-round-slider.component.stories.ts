@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { DEFAULT_PROPERTIES_OPTIONS } from '@ng-round-slider/lib/models/constants';
+import { DEFAULT_PROPERTIES_VALUES } from '@ng-round-slider/lib/models/constants';
 import { NgRoundSliderComponent } from './ng-round-slider.component';
 import { PrimaryStory, SliderTypesStory, CircleShapesStory, DifferentThemingAndAppearancesStory, PropertiesStory, EventsStory, CustomTooltipStory, CustomAnimationStory, HandleShapesStory } from './stories';
 
@@ -7,39 +7,39 @@ const meta: Meta<NgRoundSliderComponent> = {
   component: NgRoundSliderComponent,
   title: 'NgRoundSliderComponent',
   args: {
-    animation: DEFAULT_PROPERTIES_OPTIONS['animation'],
-    width: DEFAULT_PROPERTIES_OPTIONS['width'],
-    circleShape: DEFAULT_PROPERTIES_OPTIONS['circleShape'],
-    disabled: DEFAULT_PROPERTIES_OPTIONS['disabled'],
-    editableTooltip: DEFAULT_PROPERTIES_OPTIONS['editableTooltip'],
-    endAngle: DEFAULT_PROPERTIES_OPTIONS['endAngle'],
-    handleSize: DEFAULT_PROPERTIES_OPTIONS['handleSize'],
-    handleShape: DEFAULT_PROPERTIES_OPTIONS['handleShape'],
-    keyboardAction: DEFAULT_PROPERTIES_OPTIONS['keyboardAction'],
-    lineCap: DEFAULT_PROPERTIES_OPTIONS['lineCap'],
-    max: DEFAULT_PROPERTIES_OPTIONS['max'],
-    min: DEFAULT_PROPERTIES_OPTIONS['min'],
-    mouseScrollAction: DEFAULT_PROPERTIES_OPTIONS['mouseScrollAction'],
-    radius: DEFAULT_PROPERTIES_OPTIONS['radius'],
-    readOnly: DEFAULT_PROPERTIES_OPTIONS['readOnly'],
-    showTooltip: DEFAULT_PROPERTIES_OPTIONS['showTooltip'],
-    sliderType: DEFAULT_PROPERTIES_OPTIONS['sliderType'],
-    startAngle: DEFAULT_PROPERTIES_OPTIONS['startAngle'],
-    startValue: DEFAULT_PROPERTIES_OPTIONS['startValue'],
-    step: DEFAULT_PROPERTIES_OPTIONS['step'],
-    value: DEFAULT_PROPERTIES_OPTIONS['value'],
-    svgMode: DEFAULT_PROPERTIES_OPTIONS['svgMode'],
-    borderWidth: DEFAULT_PROPERTIES_OPTIONS['borderWidth'],
-    borderColor: DEFAULT_PROPERTIES_OPTIONS['borderColor'],
-    pathColor: DEFAULT_PROPERTIES_OPTIONS['pathColor'],
-    rangeColor: DEFAULT_PROPERTIES_OPTIONS['rangeColor'],
-    tooltipColor: DEFAULT_PROPERTIES_OPTIONS['tooltipColor'],
+    animation: DEFAULT_PROPERTIES_VALUES['animation'],
+    width: DEFAULT_PROPERTIES_VALUES['width'],
+    circleShape: DEFAULT_PROPERTIES_VALUES['circleShape'],
+    disabled: DEFAULT_PROPERTIES_VALUES['disabled'],
+    editableTooltip: DEFAULT_PROPERTIES_VALUES['editableTooltip'],
+    endAngle: DEFAULT_PROPERTIES_VALUES['endAngle'],
+    handleSize: DEFAULT_PROPERTIES_VALUES['handleSize'],
+    handleShape: DEFAULT_PROPERTIES_VALUES['handleShape'],
+    keyboardAction: DEFAULT_PROPERTIES_VALUES['keyboardAction'],
+    lineCap: DEFAULT_PROPERTIES_VALUES['lineCap'],
+    max: DEFAULT_PROPERTIES_VALUES['max'],
+    min: DEFAULT_PROPERTIES_VALUES['min'],
+    mouseScrollAction: DEFAULT_PROPERTIES_VALUES['mouseScrollAction'],
+    radius: DEFAULT_PROPERTIES_VALUES['radius'],
+    readOnly: DEFAULT_PROPERTIES_VALUES['readOnly'],
+    showTooltip: DEFAULT_PROPERTIES_VALUES['showTooltip'],
+    sliderType: DEFAULT_PROPERTIES_VALUES['sliderType'],
+    startAngle: DEFAULT_PROPERTIES_VALUES['startAngle'],
+    startValue: DEFAULT_PROPERTIES_VALUES['startValue'],
+    step: DEFAULT_PROPERTIES_VALUES['step'],
+    value: DEFAULT_PROPERTIES_VALUES['value'],
+    svgMode: DEFAULT_PROPERTIES_VALUES['svgMode'],
+    borderWidth: DEFAULT_PROPERTIES_VALUES['borderWidth'],
+    borderColor: DEFAULT_PROPERTIES_VALUES['borderColor'],
+    pathColor: DEFAULT_PROPERTIES_VALUES['pathColor'],
+    rangeColor: DEFAULT_PROPERTIES_VALUES['rangeColor'],
+    tooltipColor: DEFAULT_PROPERTIES_VALUES['tooltipColor'],
     tooltipFormat: null
   },
   argTypes: {
     animation: {
       name: 'animation',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['animation'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['animation'],
       description: `Enables or disables the handle movement animation.
       As the control uses the CSS3 animation, so you can use any CSS3 transition effects to customize the animation type and speed. 
       To know how to use custom animation check <a href="https://roundsliderui.com/demos.html#custom-animation">here</a>.`,
@@ -49,7 +49,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     width: {
       name: 'width',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['width'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['width'],
       description: `Indicates the width (or thickness) of the slider.`,
       control: {
         type: 'number',
@@ -57,7 +57,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     circleShape: {
       name: 'circleShape',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['circleShape'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['circleShape'],
       description: `Indicates the circle shape to be render. The available circle shapes are:
       * full, 
       * half-top
@@ -91,7 +91,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     disabled: {
       name: 'disabled',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['disabled'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['disabled'],
       description: `Sets the disable state or enable state of the control. 
       While the control in the disable state we can't interact with this.
       And in disable mode the control looks like in the blured state.`,
@@ -101,7 +101,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     editableTooltip: {
       name: 'editableTooltip',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['editableTooltip'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['editableTooltip'],
       description: `Enables the editable option of tooltip. When this property set as true, 
       we can change the value by editing the tooltip.`,
       control: {
@@ -110,7 +110,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     endAngle: {
       name: 'endAngle',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['endAngle'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['endAngle'],
       description: `Indicates the end point of the slider. Multiple format supported:
       * 180 : Sets the fixed value, where the endAngle is 180°.
       * "+180" : This is dependent to startAngle property. If the startAngle is 90° then the endAngle considered as 270°.
@@ -122,7 +122,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     handleSize: {
       name: 'handleSize',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['handleSize'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['handleSize'],
       description: `The handleSize property mentions the size of the handle. Multiple format supported:
       * 22 : Sets the fixed size, where the handle's height and width considered as 22.
       * "30,10" : Sets the fixed size, where the handle's height considered as 30 and width considered as 10.
@@ -134,7 +134,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     handleShape: {
       name: 'handleShape',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['handleShape'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['handleShape'],
       description: `The handleShape property mentions the shape of the handle. Currently the following types are available:
       * round
       * dot
@@ -152,7 +152,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     keyboardAction: {
       name: 'keyboardAction',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['keyboardAction'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['keyboardAction'],
       description: `Enables or disables the keyboard functionality.
       The slider value can be changed through the keyboard by using the arrow keys (Up, Down, Left, Right) and Home, Down keys.`,
       control: {
@@ -161,7 +161,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     lineCap: {
       name: 'lineCap',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['lineCap'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['lineCap'],
       description: `The lineCap property mentions the shape at the end part of the path. 
       This is not applicable for the "full" circle shape, except this all other circle shapes supports lineCap.
       The possible inputs for this property is:
@@ -179,7 +179,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     max: {
       name: 'max',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['max'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['max'],
       description: `The max property indicates the maximum value of the slider.`,
       control: {
         type: 'number',
@@ -187,7 +187,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     min: {
       name: 'min',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['min'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['min'],
       description: `The min property indicates the minimum value of the slider.`,
       control: {
         type: 'number',
@@ -195,7 +195,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     mouseScrollAction: {
       name: 'mouseScrollAction',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['mouseScrollAction'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['mouseScrollAction'],
       description: `Enables or disables the mouse scroll functionality.
       The slider value can be changed through the mouse scrolling.`,
       control: {
@@ -204,7 +204,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     radius: {
       name: 'radius',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['radius'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['radius'],
       description: `The radius property indicates the radius of the slider's circle.
       Note : The height and width of the control considered as (2 * radius).`,
       control: {
@@ -213,7 +213,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     readOnly: {
       name: 'readOnly',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['readOnly'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['readOnly'],
       description: `This enables the control into the readOnly mode, so we can can't interact with the control when readOnly enabled.`,
       control: {
         type: 'boolean',
@@ -221,7 +221,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     showTooltip: {
       name: 'showTooltip',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['showTooltip'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['showTooltip'],
       description: `Enables or disables the tooltip inside the slider.`,
       control: {
         type: 'boolean',
@@ -229,7 +229,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     sliderType: {
       name: 'sliderType',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['sliderType'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['sliderType'],
       description: `Indicates the slider type to be render. The available slider types are:
       * default
       * min-range
@@ -245,7 +245,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     startAngle: {
       name: 'startAngle',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['startAngle'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['startAngle'],
       description: `Indicates the starting point of the slider.
       The startAngle property is applicable for "full", "custom-half", "custom-quarter" and "pie" circle shapes only.`,
       control: {
@@ -254,7 +254,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     startValue: {
       name: 'startValue',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['startValue'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['startValue'],
       description: `This property decides at which point the slider should start. Otherwise, by default the slider starts with min value.
       This is mainly used for min-range slider, where you can customize the min-range start position.`,
       control: {
@@ -263,7 +263,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     step: {
       name: 'step',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['step'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['step'],
       description: `Decides the number of steps or value should take while we move the handle.`,
       control: {
         type: 'number',
@@ -271,7 +271,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     value: {
       name: 'value',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['value'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['value'],
       description: `Sets or gets the value of the slider.
       For default and min-range slider the property allows a single value (ex: value - 10).
       For range slider the property allows two values separated by comma (ex: value - "30,60").`,
@@ -281,7 +281,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     svgMode: {
       name: 'svgMode',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['svgMode'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['svgMode'],
       description: `This will enables the slider into the SVG mode.
       Through SVG mode you can do a lot of customization, and it will resolve all the legacy issues.
       Note : It is recommended to use the SVG mode for better usability and customization.`,
@@ -291,7 +291,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     borderWidth: {
       name: 'borderWidth',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['borderWidth'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['borderWidth'],
       description: `Indicates the border width of the slider.
       Note : This is only applicable for <a href="https://roundsliderui.com/document.html#svgMode">SVG mode</a>.`,
       control: {
@@ -300,7 +300,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     borderColor: {
       name: 'borderColor',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['borderColor'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['borderColor'],
       description: `Sets the border color of the slider.`,
       control: {
         type: 'color',
@@ -308,7 +308,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     pathColor: {
       name: 'pathColor',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['pathColor'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['pathColor'],
       description: `Sets the path color of the slider.`,
       control: {
         type: 'color',
@@ -316,7 +316,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     rangeColor: {
       name: 'rangeColor',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['rangeColor'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['rangeColor'],
       description: `Sets the range color of the slider.`,
       control: {
         type: 'color',
@@ -324,7 +324,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     },
     tooltipColor: {
       name: 'tooltipColor',
-      defaultValue: DEFAULT_PROPERTIES_OPTIONS['tooltipColor'],
+      defaultValue: DEFAULT_PROPERTIES_VALUES['tooltipColor'],
       description: `Sets the tooltip color of the slider.`,
       control: {
         type: 'color',

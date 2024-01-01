@@ -1,6 +1,7 @@
 import { ISliderProperties } from '../interfaces';
 
-export const DEFAULT_PROPERTIES_OPTIONS: ISliderProperties = {
+/** Default properties values */
+export const DEFAULT_PROPERTIES_VALUES: ISliderProperties = {
   animation: true,
   width: 18,
   circleShape: 'full',

@@ -1,1 +1,1 @@
-export { DEFAULT_PROPERTIES_OPTIONS } from './default-properties-options.constant';
+export { DEFAULT_PROPERTIES_VALUES } from './default-properties-values.constant';

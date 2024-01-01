@@ -5,6 +5,7 @@ import { IBeforeValueChangeEventData } from './before-value-change-event-data.in
 import { IUpdateEventData } from './update-event-data.interface';
 import { IValueChangeEventData } from './value-change-event-data.interface';
 
+/** Slider events */
 export interface ISliderEvents {
   /**
    * This event triggered before the control will initialize.

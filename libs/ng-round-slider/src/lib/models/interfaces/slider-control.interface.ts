@@ -2,7 +2,13 @@ import { SliderPropertyValue } from '../types';
 import { ISliderOptions } from './slider-options.interface';
 import { ISliderProperties } from './slider-properties.interface';
 
+/** Slider control */
 export interface ISliderControl {
+  /** 
+   * Setter or getter of specific property.
+   * 
+   * {@link https://roundsliderui.com/document.html#how-to-use-options Docs}
+   */
   option: (property: keyof ISliderProperties, value?: SliderPropertyValue) => void | SliderPropertyValue,
   /**
    * This method is used to set the value to the slider control.

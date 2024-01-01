@@ -1,3 +1,8 @@
+/**
+ * Indicates the circle shape to be render.
+ * 
+ * {@link https://roundsliderui.com/document.html#circleShape Docs}
+ */
 export type CircleShape =
   | 'full'
   | 'half-top'

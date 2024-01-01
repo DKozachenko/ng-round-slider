@@ -2,10 +2,15 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input,
 import { v4 as uuidv4 } from 'uuid';
 import * as $ from 'jquery';
 import 'round-slider';
-import { DEFAULT_PROPERTIES_OPTIONS } from '@ng-round-slider/lib/models/constants';
+import { DEFAULT_PROPERTIES_VALUES } from '@ng-round-slider/lib/models/constants';
 import { IBaseEventData, IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderEvents, ISliderOptions, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '@ng-round-slider/lib/models/interfaces';
 import { SliderId, SliderPropertyValue } from '@ng-round-slider/lib/models/types';
 
+/** 
+ * Slider component that allows the user to select a value or range of values. 
+ * 
+ * {@link https://roundsliderui.com/ JQuery Plugin} which implemented as Angular component.
+ */
 @Component({
   selector: 'ng-round-slider',
   standalone: true,
@@ -13,6 +18,7 @@ import { SliderId, SliderPropertyValue } from '@ng-round-slider/lib/models/types
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEvents, 'tooltipFormat'>, OnInit, AfterViewInit, OnChanges, OnDestroy {
+  /** Slider div id */
   public id!: SliderId;
 
   /**
@@ -20,9 +26,9 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    *
    * As the control uses the CSS3 animation, so you can use any CSS3 transition effects to customize the animation type and speed. To know how to use custom animation check here {@link https://roundsliderui.com/demos.html#custom-animation here}.
    */
-  @Input({ required: false }) public animation: ISliderOptions['animation'] = DEFAULT_PROPERTIES_OPTIONS['animation'];
+  @Input({ required: false }) public animation: ISliderOptions['animation'] = DEFAULT_PROPERTIES_VALUES['animation'];
   /** Indicates the width (or thickness) of the slider. */
-  @Input({ required: false }) public width: ISliderOptions['width'] = DEFAULT_PROPERTIES_OPTIONS['width'];
+  @Input({ required: false }) public width: ISliderOptions['width'] = DEFAULT_PROPERTIES_VALUES['width'];
   /** Indicates the circle shape to be render. The available circle shapes are:
    * * full
    * * half-top
@@ -37,15 +43,15 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    * * custom-half
    * * custom-quarter
   */
-  @Input({ required: false }) public circleShape: ISliderOptions['circleShape'] = DEFAULT_PROPERTIES_OPTIONS['circleShape'];
+  @Input({ required: false }) public circleShape: ISliderOptions['circleShape'] = DEFAULT_PROPERTIES_VALUES['circleShape'];
   /**
    * Sets the disable state or enable state of the control. While the control in the disable state we can't interact with this.
    *
    * And in disable mode the control looks like in the blured state.
    */
-  @Input({ required: false }) public disabled: ISliderOptions['disabled'] = DEFAULT_PROPERTIES_OPTIONS['disabled'];
+  @Input({ required: false }) public disabled: ISliderOptions['disabled'] = DEFAULT_PROPERTIES_VALUES['disabled'];
   /** Enables the editable option of tooltip. When this property set as true, we can change the value by editing the tooltip. */
-  @Input({ required: false }) public editableTooltip: ISliderOptions['editableTooltip'] = DEFAULT_PROPERTIES_OPTIONS['editableTooltip'];
+  @Input({ required: false }) public editableTooltip: ISliderOptions['editableTooltip'] = DEFAULT_PROPERTIES_VALUES['editableTooltip'];
   /**
    * Indicates the end point of the slider.
    *
@@ -56,7 +62,7 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    *
    * The endAngle property is applicable for "full" circle shape only.
    */
-  @Input({ required: false }) public endAngle: ISliderOptions['endAngle'] = DEFAULT_PROPERTIES_OPTIONS['endAngle'];
+  @Input({ required: false }) public endAngle: ISliderOptions['endAngle'] = DEFAULT_PROPERTIES_VALUES['endAngle'];
   /**
    * The handleSize property mentions the size of the handle.
    *
@@ -66,7 +72,7 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    * * **"+4"** : This is dependent to width property. If the width is 20 then the handleSize considered as 24.
    * * **"-4"** : This is also dependent to width property. If the width is 20 then the handleSize considered as 16.
    */
-  @Input({ required: false }) public handleSize: ISliderOptions['handleSize'] = DEFAULT_PROPERTIES_OPTIONS['handleSize'];
+  @Input({ required: false }) public handleSize: ISliderOptions['handleSize'] = DEFAULT_PROPERTIES_VALUES['handleSize'];
   /**
    * The handleShape property mentions the shape of the handle. Currently the following types are available:
    * * **round**
@@ -75,13 +81,13 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    *
    * In addition you can make your own handle shape by customizing this. Please check {@link https://roundsliderui.com/demos.html#custom-handle-shape here} for handle customization.
    */
-  @Input({ required: false }) public handleShape: ISliderOptions['handleShape'] = DEFAULT_PROPERTIES_OPTIONS['handleShape'];
+  @Input({ required: false }) public handleShape: ISliderOptions['handleShape'] = DEFAULT_PROPERTIES_VALUES['handleShape'];
   /**
    * Enables or disables the keyboard functionality.
    *
    * The slider value can be changed through the keyboard by using the arrow keys (Up, Down, Left, Right) and Home, Down keys.
    */
-  @Input({ required: false }) public keyboardAction: ISliderOptions['keyboardAction'] = DEFAULT_PROPERTIES_OPTIONS['keyboardAction'];
+  @Input({ required: false }) public keyboardAction: ISliderOptions['keyboardAction'] = DEFAULT_PROPERTIES_VALUES['keyboardAction'];
   /**
    * The lineCap property mentions the shape at the end part of the path. This is not applicable for the "full" circle shape, except this all other circle shapes supports lineCap.
    *
@@ -90,55 +96,55 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    * * **round**
    * * **butt**
    */
-  @Input({ required: false }) public lineCap: ISliderOptions['lineCap'] = DEFAULT_PROPERTIES_OPTIONS['lineCap'];
+  @Input({ required: false }) public lineCap: ISliderOptions['lineCap'] = DEFAULT_PROPERTIES_VALUES['lineCap'];
   /** The max property indicates the maximum value of the slider. */
-  @Input({ required: false }) public max: ISliderOptions['max'] = DEFAULT_PROPERTIES_OPTIONS['max'];
+  @Input({ required: false }) public max: ISliderOptions['max'] = DEFAULT_PROPERTIES_VALUES['max'];
   /** The min property indicates the minimum value of the slider. */
-  @Input({ required: false }) public min: ISliderOptions['min'] = DEFAULT_PROPERTIES_OPTIONS['min'];
+  @Input({ required: false }) public min: ISliderOptions['min'] = DEFAULT_PROPERTIES_VALUES['min'];
   /**
    * Enables or disables the mouse scroll functionality.
    *
    * The slider value can be changed through the mouse scrolling.
    */
-  @Input({ required: false }) public mouseScrollAction: ISliderOptions['mouseScrollAction'] = DEFAULT_PROPERTIES_OPTIONS['mouseScrollAction'];
+  @Input({ required: false }) public mouseScrollAction: ISliderOptions['mouseScrollAction'] = DEFAULT_PROPERTIES_VALUES['mouseScrollAction'];
   /**
    * The radius property indicates the radius of the slider's circle.
    *
    * Note : The height and width of the control considered as (2 * radius).
    */
-  @Input({ required: false }) public radius: ISliderOptions['radius'] = DEFAULT_PROPERTIES_OPTIONS['radius'];
+  @Input({ required: false }) public radius: ISliderOptions['radius'] = DEFAULT_PROPERTIES_VALUES['radius'];
   /** This enables the control into the readOnly mode, so we can can't interact with the control when readOnly enabled. */
-  @Input({ required: false }) public readOnly: ISliderOptions['readOnly'] = DEFAULT_PROPERTIES_OPTIONS['readOnly'];
+  @Input({ required: false }) public readOnly: ISliderOptions['readOnly'] = DEFAULT_PROPERTIES_VALUES['readOnly'];
   /** Enables or disables the tooltip inside the slider. */
-  @Input({ required: false }) public showTooltip: ISliderOptions['showTooltip'] = DEFAULT_PROPERTIES_OPTIONS['showTooltip'];
+  @Input({ required: false }) public showTooltip: ISliderOptions['showTooltip'] = DEFAULT_PROPERTIES_VALUES['showTooltip'];
   /**
    * Indicates the slider type to be render. The available slider types are:
    * * **default**
    * * **min-range**
    * * **range**
    */
-  @Input({ required: false }) public sliderType: ISliderOptions['sliderType'] = DEFAULT_PROPERTIES_OPTIONS['sliderType'];
+  @Input({ required: false }) public sliderType: ISliderOptions['sliderType'] = DEFAULT_PROPERTIES_VALUES['sliderType'];
   /**
    * Indicates the starting point of the slider.
    *
    * The startAngle property is applicable for "full", "custom-half", "custom-quarter" and "pie" circle shapes only.
    */
-  @Input({ required: false }) public startAngle: ISliderOptions['startAngle'] = DEFAULT_PROPERTIES_OPTIONS['startAngle'];
+  @Input({ required: false }) public startAngle: ISliderOptions['startAngle'] = DEFAULT_PROPERTIES_VALUES['startAngle'];
   /**
    * This property decides at which point the slider should start. Otherwise, by default the slider starts with min value.
    *
    * This is mainly used for min-range slider, where you can customize the min-range start position.
    */
-  @Input({ required: false }) public startValue: ISliderOptions['startValue'] = DEFAULT_PROPERTIES_OPTIONS['startValue'];
+  @Input({ required: false }) public startValue: ISliderOptions['startValue'] = DEFAULT_PROPERTIES_VALUES['startValue'];
   /** Decides the number of steps or value should take while we move the handle. */
-  @Input({ required: false }) public step: ISliderOptions['step'] = DEFAULT_PROPERTIES_OPTIONS['step'];
+  @Input({ required: false }) public step: ISliderOptions['step'] = DEFAULT_PROPERTIES_VALUES['step'];
   /**
    * Sets or gets the value of the slider.
    *
    * For default and min-range slider the property allows a single value (ex: value - 10)
    * For range slider the property allows two values separated by comma (ex: value - "30,60").
    */
-  @Input({ required: false }) public value: ISliderOptions['value'] = DEFAULT_PROPERTIES_OPTIONS['value'];
+  @Input({ required: false }) public value: ISliderOptions['value'] = DEFAULT_PROPERTIES_VALUES['value'];
   /**
    * This will enables the slider into the SVG mode.
    *
@@ -146,21 +152,21 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    *
    * Note : It is recommended to use the SVG mode for better usability and customization.
    */
-  @Input({ required: false }) public svgMode: ISliderOptions['svgMode'] = DEFAULT_PROPERTIES_OPTIONS['svgMode'];
+  @Input({ required: false }) public svgMode: ISliderOptions['svgMode'] = DEFAULT_PROPERTIES_VALUES['svgMode'];
   /**
    * Indicates the border width of the slider.
    *
    * Note : This is only applicable for {@link https://roundsliderui.com/document.html#svgMode SVG mode}
    */
-  @Input({ required: false }) public borderWidth: ISliderOptions['borderWidth'] = DEFAULT_PROPERTIES_OPTIONS['borderWidth'];
+  @Input({ required: false }) public borderWidth: ISliderOptions['borderWidth'] = DEFAULT_PROPERTIES_VALUES['borderWidth'];
   /** Sets the border color of the slider. */
-  @Input({ required: false }) public borderColor: ISliderOptions['borderColor'] = DEFAULT_PROPERTIES_OPTIONS['borderColor'];
+  @Input({ required: false }) public borderColor: ISliderOptions['borderColor'] = DEFAULT_PROPERTIES_VALUES['borderColor'];
   /** Sets the path color of the slider. */
-  @Input({ required: false }) public pathColor: ISliderOptions['pathColor'] = DEFAULT_PROPERTIES_OPTIONS['pathColor'];
+  @Input({ required: false }) public pathColor: ISliderOptions['pathColor'] = DEFAULT_PROPERTIES_VALUES['pathColor'];
   /** Sets the range color of the slider. */
-  @Input({ required: false }) public rangeColor: ISliderOptions['rangeColor'] = DEFAULT_PROPERTIES_OPTIONS['rangeColor'];
+  @Input({ required: false }) public rangeColor: ISliderOptions['rangeColor'] = DEFAULT_PROPERTIES_VALUES['rangeColor'];
   /** Sets the tooltip color of the slider. */
-  @Input({ required: false }) public tooltipColor: ISliderOptions['tooltipColor'] = DEFAULT_PROPERTIES_OPTIONS['tooltipColor'];
+  @Input({ required: false }) public tooltipColor: ISliderOptions['tooltipColor'] = DEFAULT_PROPERTIES_VALUES['tooltipColor'];
   /**
    * This event will act as a callback. So you can customize the tooltip template by returning with the custom values here.
    * 
@@ -200,10 +206,12 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
   /** This event is similar to 'update' event, in addition it will trigger even the value was changed through programmatically also. */
   @Output() public readonly valueChange: EventEmitter<IValueChangeEventData> = new EventEmitter<IValueChangeEventData>();
 
+  /** Slider element */
   private get sliderElement(): ISliderElement {
     return $(`#${this.id}`) as ISliderElement;
   }
 
+  /** Slider control */
   private get sliderControl(): ISliderControl | undefined {
     return <ISliderControl | undefined>this.sliderElement.data("roundSlider");
   }
@@ -216,6 +224,7 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
     console.warn('changes', changes);
   }
 
+  /** Initialization */
   private init(): void {
     this.sliderElement.roundSlider({
       animation: this.animation,
@@ -261,10 +270,10 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
   }
 
   public ngAfterViewInit(): void {
-    // TODO: run in ngOnInit
     this.init();
   }
 
+  /** Receiving property value */
   public getProperty(property: keyof ISliderProperties): SliderPropertyValue | undefined {
     const control: ISliderControl | undefined = this.sliderControl;
 
@@ -275,6 +284,7 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
     return <SliderPropertyValue>control.option(property);
   }
 
+  /** Setting property value */
   public setProperty(property: keyof ISliderProperties, value: SliderPropertyValue): void {
     const control: ISliderControl | undefined = this.sliderControl;
 
