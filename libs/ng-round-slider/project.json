@@ -56,7 +56,8 @@
         "outputDir": "dist/storybook/ng-round-slider",
         "configDir": "libs/ng-round-slider/.storybook",
         "browserTarget": "ng-round-slider:build-storybook",
-        "compodoc": false
+        "compodoc": false,
+        "styles": ["node_modules/round-slider/dist/roundslider.min.css"]
       },
       "configurations": {
         "ci": {

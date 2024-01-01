@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { DEFAULT_PROPERTIES_VALUES } from '@ng-round-slider/lib/models/constants';
+import { DEFAULT_PROPERTIES_VALUES } from '@constants';
 import { NgRoundSliderComponent } from './ng-round-slider.component';
 import { PrimaryStory, SliderTypesStory, CircleShapesStory, DifferentThemingAndAppearancesStory, PropertiesStory, EventsStory, CustomTooltipStory, CustomAnimationStory, HandleShapesStory } from './stories';
 

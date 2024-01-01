@@ -7,7 +7,12 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@interfaces": ["libs/ng-round-slider/src/lib/models/interfaces/index.ts"],
+      "@constants": ["libs/ng-round-slider/src/lib/models/constants/index.ts"],
+      "@types": ["libs/ng-round-slider/src/lib/models/types/index.ts"]
+    }
   },
   "files": [],
   "include": [],

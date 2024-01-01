@@ -2,9 +2,9 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input,
 import { v4 as uuidv4 } from 'uuid';
 import * as $ from 'jquery';
 import 'round-slider';
-import { DEFAULT_PROPERTIES_VALUES } from '@ng-round-slider/lib/models/constants';
-import { IBaseEventData, IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderEvents, ISliderOptions, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '@ng-round-slider/lib/models/interfaces';
-import { SliderId, SliderPropertyValue } from '@ng-round-slider/lib/models/types';
+import { DEFAULT_PROPERTIES_VALUES } from '@constants';
+import { IBaseEventData, IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderEvents, ISliderOptions, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '@interfaces';
+import { SliderId, SliderPropertyValue } from '@types';
 
 /** 
  * Slider component that allows the user to select a value or range of values. 
