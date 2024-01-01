@@ -3,8 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import * as $ from 'jquery';
 import 'round-slider';
 import { DEFAULT_PROPERTIES_OPTIONS } from '@ng-round-slider/lib/models/constants';
-import { IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderOptions, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '@ng-round-slider/lib/models/interfaces';
-import { IBaseEventData } from '@ng-round-slider/lib/models/interfaces';
+import { IBaseEventData, IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderEvents, ISliderOptions, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '@ng-round-slider/lib/models/interfaces';
 import { SliderId, SliderPropertyValue } from '@ng-round-slider/lib/models/types';
 
 @Component({
@@ -13,7 +12,7 @@ import { SliderId, SliderPropertyValue } from '@ng-round-slider/lib/models/types
   template: '<div [id]="id"></div>',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgRoundSliderComponent implements ISliderProperties, OnInit, AfterViewInit, OnChanges, OnDestroy {
+export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEvents, 'tooltipFormat'>, OnInit, AfterViewInit, OnChanges, OnDestroy {
   public id!: SliderId;
 
   /**
@@ -162,6 +161,13 @@ export class NgRoundSliderComponent implements ISliderProperties, OnInit, AfterV
   @Input({ required: false }) public rangeColor: ISliderOptions['rangeColor'] = DEFAULT_PROPERTIES_OPTIONS['rangeColor'];
   /** Sets the tooltip color of the slider. */
   @Input({ required: false }) public tooltipColor: ISliderOptions['tooltipColor'] = DEFAULT_PROPERTIES_OPTIONS['tooltipColor'];
+  /**
+   * This event will act as a callback. So you can customize the tooltip template by returning with the custom values here.
+   * 
+   * Check the below demo for better understanding:
+   * * {@link https://roundsliderui.com/demos.html#custom-tooltip Custom Tooltip}
+   */
+  @Input({ required: false }) public tooltipFormat: ISliderEvents['tooltipFormat'] = null;
 
   /**
    * This event triggered before the control will initialize.
@@ -208,7 +214,6 @@ export class NgRoundSliderComponent implements ISliderProperties, OnInit, AfterV
 
   public ngOnChanges(changes: SimpleChanges): void {
     console.warn('changes', changes);
-    console.warn(this.id);
   }
 
   private init(): void {
@@ -233,16 +238,15 @@ export class NgRoundSliderComponent implements ISliderProperties, OnInit, AfterV
       circleShape: this.circleShape,
       handleShape: this.handleShape,
       lineCap: this.lineCap,
-
       startValue: this.startValue,
-
+      // SVG related properties
       svgMode: this.svgMode,
       borderWidth: this.borderWidth,
       borderColor: this.borderColor,
       pathColor: this.pathColor,
       rangeColor: this.rangeColor,
       tooltipColor: this.tooltipColor,
-
+      // Events
       beforeCreate: (data: IBaseEventData<'beforeCreate'>) => this.beforeCreate.emit(data),
       create: (data: IBaseEventData<'create'>) => this.create.emit(data),
       start: (data: IBaseMoveEventData<'start'>) => this.start.emit(data),
@@ -252,7 +256,7 @@ export class NgRoundSliderComponent implements ISliderProperties, OnInit, AfterV
       change: (data: IBaseHandleEventData<'change'>) => this.change.emit(data),
       update: (data: IUpdateEventData) => this.update.emit(data),
       valueChange: (data: IValueChangeEventData) => this.valueChange.emit(data),
-      tooltipFormat: () => {}
+      tooltipFormat: this.tooltipFormat
     });
   }
 
@@ -275,7 +279,6 @@ export class NgRoundSliderComponent implements ISliderProperties, OnInit, AfterV
     const control: ISliderControl | undefined = this.sliderControl;
 
     if (!control) {
-      console.warn('hha');
       return;
     }
 

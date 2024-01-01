@@ -1,3 +1,4 @@
+import { IBaseMoveEventData } from '@ng-round-slider/lib/models/interfaces';
 import { Story } from '../ng-round-slider.component.stories';
 
 export const CustomTooltipStory: Story = {
@@ -12,6 +13,18 @@ export const CustomTooltipStory: Story = {
       '.slider2 ::ng-deep .rs-path-color { background-color: #939393; }',
       '.slider2 ::ng-deep .rs-handle { background-color: orange; }',
     ],
+    props: {
+      formatting1: (data: IBaseMoveEventData<'tooltipFormat'>) => {
+        const months: string[] = ['January', 'February', 'March', 
+          'April', 'May', 'June', 'July',
+          'August', 'September', 'October', 
+          'November', 'December'];
+        return months[<number>data.value];
+      },
+      formatting2: (data: IBaseMoveEventData<'tooltipFormat'>) => {
+        return '$ ' + data.value;
+      }
+    },
     template: `
       <div class="wrapper">
         <ng-round-slider
@@ -26,6 +39,7 @@ export const CustomTooltipStory: Story = {
           [editableTooltip]="false"
           [radius]="300"
           [width]="20"
+          [tooltipFormat]="formatting1"
         ></ng-round-slider>
 
         <ng-round-slider
@@ -34,6 +48,7 @@ export const CustomTooltipStory: Story = {
           [value]="50"
           [radius]="90"
           [width]="4"
+          [tooltipFormat]="formatting2"
         ></ng-round-slider>
       </div>
     `,

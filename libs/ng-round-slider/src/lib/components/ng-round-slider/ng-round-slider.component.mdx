@@ -6,13 +6,13 @@ import * as SliderStories from './ng-round-slider.component.stories.ts';
 <Subtitle>An Angular component that allows the user to select a value or range of values.</Subtitle>
 <Description>
 {`
-  [JQuery Plugin](https://roundsliderui.com) which implemented as Angular component. Mostly duplicate original documentation.
+  [JQuery Plugin](https://roundsliderui.com) which implemented as Angular component. Mostly duplicate original [documentation](https://roundsliderui.com/demos.html).
 `}
 </Description>
 
 ### Primary
 
-Describes component with all input and output properties. Can be controlled with controls below. 
+Describes component with all input (exluding "tooltipFormat") and output properties. Can be controlled with controls below. 
 
 <Primary />
 <Controls of={SliderStories.Primary} />
@@ -45,7 +45,7 @@ The handle shapes are defined in the **".rs-handle"** class. By customizing this
 
 The below examples shows the **gauge** like appearances.
 
-//TODO:
+<Canvas of={SliderStories.HandleShapes} />
 
 ## Properties
 
@@ -59,6 +59,8 @@ The following demo shows the basic usage of the events.
 
 Due to the flexibility of roundSlider, the user can do any customization based on their requirement. Here, some examples for the basic customization.
 
+<Canvas of={SliderStories.Events} />
+
 ## Customizations
 
 Due to the flexibility of roundSlider, the user can do any customization based on their requirement. Here, some examples for the basic customization.
@@ -67,7 +69,6 @@ Due to the flexibility of roundSlider, the user can do any customization based o
 
 The control provides the callback function for the tooltip value. By using that callback function we can customize the tooltip like any format.
 
-//TODO: Tooltip
 <Canvas of={SliderStories.CustomTooltip} />
 
 ### Custom Animation

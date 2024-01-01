@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { DEFAULT_PROPERTIES_OPTIONS } from '@ng-round-slider/lib/models/constants';
 import { NgRoundSliderComponent } from './ng-round-slider.component';
-import { PrimaryStory, SliderTypesStory, CircleShapesStory, DifferentThemingAndAppearancesStory, PropertiesStory, EventsStory, CustomTooltipStory, CustomAnimationStory } from './stories';
+import { PrimaryStory, SliderTypesStory, CircleShapesStory, DifferentThemingAndAppearancesStory, PropertiesStory, EventsStory, CustomTooltipStory, CustomAnimationStory, HandleShapesStory } from './stories';
 
 const meta: Meta<NgRoundSliderComponent> = {
   component: NgRoundSliderComponent,
@@ -34,6 +34,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     pathColor: DEFAULT_PROPERTIES_OPTIONS['pathColor'],
     rangeColor: DEFAULT_PROPERTIES_OPTIONS['rangeColor'],
     tooltipColor: DEFAULT_PROPERTIES_OPTIONS['tooltipColor'],
+    tooltipFormat: null
   },
   argTypes: {
     animation: {
@@ -329,6 +330,14 @@ const meta: Meta<NgRoundSliderComponent> = {
         type: 'color',
       },
     },
+    tooltipFormat: {
+      name: 'tooltipFormat',
+      defaultValue: null,
+      description: `This event will act as a callback. So you can customize the tooltip template by returning 
+      with the custom values here. Check the below demo for better understanding:
+      <a href="https://roundsliderui.com/demos.html#custom-tooltip">Custom Tooltip</a>`,
+      control: false
+    }
   },
 };
 export default meta;
@@ -338,6 +347,7 @@ export const Primary: Story = PrimaryStory;
 export const SliderTypes: Story = SliderTypesStory;
 export const CircleShapes: Story = CircleShapesStory;
 export const DifferentThemingAndAppearances: Story = DifferentThemingAndAppearancesStory;
+export const HandleShapes: Story = HandleShapesStory;
 export const Properties: Story = PropertiesStory;
 export const Events: Story = EventsStory;
 export const CustomTooltip: Story = CustomTooltipStory;
