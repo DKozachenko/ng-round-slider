@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
 import * as $ from 'jquery';
 import 'round-slider';
@@ -221,7 +221,7 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    console.warn('changes', changes);
+    this.refresh(changes);
   }
 
   /** Initialization */
@@ -267,6 +267,23 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
       valueChange: (data: IValueChangeEventData) => this.valueChange.emit(data),
       tooltipFormat: this.tooltipFormat
     });
+  }
+
+  /** Updating properties according to changes */
+  private refresh(changes: SimpleChanges): void {
+    for (const key of Object.keys(changes)) {
+      const change: SimpleChange = changes[key];
+      if (change.firstChange) {
+        continue;
+      }
+
+      const propValue: SliderPropertyValue | undefined = this.getProperty(<keyof ISliderProperties>key);
+      if (propValue === change.currentValue) {
+        continue;
+      }
+
+      this.setProperty(<keyof ISliderProperties>key, change.currentValue);
+    }
   }
 
   public ngAfterViewInit(): void {
