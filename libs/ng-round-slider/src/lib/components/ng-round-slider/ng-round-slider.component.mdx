@@ -1,0 +1,79 @@
+import { Meta, Controls, Primary, Title, Subtitle, Description, Canvas } from '@storybook/blocks';
+import * as SliderStories from './ng-round-slider.component.stories.ts';
+
+<Meta of={SliderStories} />
+<Title>NgRoundSliderComponent</Title>
+<Subtitle>An Angular component that allows the user to select a value or range of values.</Subtitle>
+<Description>
+{`
+  [JQuery Plugin](https://roundsliderui.com) which implemented as Angular component. Mostly duplicate original documentation.
+`}
+</Description>
+
+### Primary
+
+Describes component with all input and output properties. Can be controlled with controls below. 
+
+<Primary />
+<Controls of={SliderStories.Primary} />
+
+## Various Slider Types
+
+There are three types of sliders available such as **default**, **min-range** and **range** slider. The default and min-range sliders are the similar which is used to select a single value inbetween the min and max values. In case of range slider, it is used to selece a range of values.
+
+<Canvas of={SliderStories.SliderTypes} />
+
+## Various Circle Shapes
+
+The roundSlider not only means the complete round circle, it also supports the most commonly used circle shapes such as:
+
+* **Quarter Circle** [ quarter-top-left, quarter-top-right, quarter-bottom-left, quarter-bottom-right ]
+* **Half Circle** [ half-top, half-bottom, half-left, half-right ]
+* **Pie shape**
+
+<Canvas of={SliderStories.CircleShapes} />
+
+## Different Theming and Appearances
+
+The following demos show that, in what are the ways we can customize the control. The below examples may provide an idea to make different look and feel.
+
+<Canvas of={SliderStories.DifferentThemingAndAppearances} />
+
+## Custom Handle Shapes
+
+The handle shapes are defined in the **".rs-handle"** class. By customizing this class we can make different shapes of handle.
+
+The below examples shows the **gauge** like appearances.
+
+//TODO:
+
+## Properties
+
+The following demos shows the basic usage of some properties.
+
+<Canvas of={SliderStories.Properties} />
+
+## Events
+
+The following demo shows the basic usage of the events.
+
+Due to the flexibility of roundSlider, the user can do any customization based on their requirement. Here, some examples for the basic customization.
+
+## Customizations
+
+Due to the flexibility of roundSlider, the user can do any customization based on their requirement. Here, some examples for the basic customization.
+
+### Custom Tooltip
+
+The control provides the callback function for the tooltip value. By using that callback function we can customize the tooltip like any format.
+
+//TODO: Tooltip
+<Canvas of={SliderStories.CustomTooltip} />
+
+### Custom Animation
+
+As roundSlider uses the CSS3 transition for animations, so we can use any other transition styles for different animation effects.
+
+To use different animation just enought to change the CSS property of "transition-timing-function". In the below example you can see, how to use the custom animation. To know more about "transition-timing-function", check [here](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function).
+
+<Canvas of={SliderStories.CustomAnimation} />
