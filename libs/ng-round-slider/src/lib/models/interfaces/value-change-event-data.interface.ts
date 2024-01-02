@@ -7,7 +7,7 @@ export interface IValueChangeEventData
   extends IBaseEventData<'valueChange'>,
     Pick<IBaseHandleEventData<'valueChange'>, 'preValue'> {
   action: 'code' | 'change' | 'drag';
-  handles: IHandle[],
+  handles: IHandle[];
   isInvertedRange?: boolean;
   isUserAction: boolean;
 }

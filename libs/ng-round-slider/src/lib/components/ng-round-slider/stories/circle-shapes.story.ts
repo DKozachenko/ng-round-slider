@@ -3,7 +3,9 @@ import { Story } from '../ng-round-slider.component.stories';
 export const CircleShapesStory: Story = {
   name: 'Various Circle Shapes',
   render: () => ({
-    styles: ['.wrapper { display: grid; gap: 15px; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr);}'],
+    styles: [
+      '.wrapper { display: grid; gap: 15px; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr);}',
+    ],
     template: `
       <div class="wrapper">
         <ng-round-slider

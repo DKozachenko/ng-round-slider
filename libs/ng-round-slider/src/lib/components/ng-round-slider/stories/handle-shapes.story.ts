@@ -15,9 +15,9 @@ export const HandleShapesStory: Story = {
 
       '.slider2 ::ng-deep .rs-handle { background-color: transparent; border: 8px solid transparent; border-right-color: black; margin: -8px 0 0 14px !important; }',
       '.slider2 ::ng-deep .rs-handle:before { display: block; content: " "; position: absolute; height: 12px; width: 12px; background: black; right: -6px; bottom: -6px; border-radius: 100%; }',
-      '.slider2 ::ng-deep .rs-handle:after { display: block; content: " "; width: 106px; position: absolute; top: -1px; right: 0px; border-top: 2px dotted black; }',  
-      '.slider2 ::ng-deep .rs-range-color { background-color: #8832cd; }',  
-      '.slider2 ::ng-deep .rs-path-color { background-color: #ddc5f0; }',  
+      '.slider2 ::ng-deep .rs-handle:after { display: block; content: " "; width: 106px; position: absolute; top: -1px; right: 0px; border-top: 2px dotted black; }',
+      '.slider2 ::ng-deep .rs-range-color { background-color: #8832cd; }',
+      '.slider2 ::ng-deep .rs-path-color { background-color: #ddc5f0; }',
     ],
     props: {
       formatting1: (data: IBaseMoveEventData<'tooltipFormat'>) => {
@@ -32,7 +32,7 @@ export const HandleShapesStory: Story = {
       },
       formatting2: (data: IBaseMoveEventData<'tooltipFormat'>) => {
         return '$ ' + data.value;
-      }
+      },
     },
     template: `
       <div class="wrapper">

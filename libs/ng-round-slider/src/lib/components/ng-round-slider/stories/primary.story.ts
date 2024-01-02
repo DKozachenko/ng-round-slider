@@ -1,5 +1,12 @@
 import { HandlerFunction, action } from '@storybook/addon-actions';
-import { IBaseEventData, IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, IUpdateEventData, IValueChangeEventData } from '@interfaces';
+import {
+  IBaseEventData,
+  IBaseHandleEventData,
+  IBaseMoveEventData,
+  IBeforeValueChangeEventData,
+  IUpdateEventData,
+  IValueChangeEventData,
+} from '@interfaces';
 import { Story } from '../ng-round-slider.component.stories';
 
 export const PrimaryStory: Story = {

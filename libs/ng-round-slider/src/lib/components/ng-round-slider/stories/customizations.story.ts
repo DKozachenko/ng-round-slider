@@ -15,15 +15,25 @@ export const CustomTooltipStory: Story = {
     ],
     props: {
       formatting1: (data: IBaseMoveEventData<'tooltipFormat'>) => {
-        const months: string[] = ['January', 'February', 'March', 
-          'April', 'May', 'June', 'July',
-          'August', 'September', 'October', 
-          'November', 'December'];
+        const months: string[] = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ];
         return months[<number>data.value];
       },
       formatting2: (data: IBaseMoveEventData<'tooltipFormat'>) => {
         return '$ ' + data.value;
-      }
+      },
     },
     template: `
       <div class="wrapper">

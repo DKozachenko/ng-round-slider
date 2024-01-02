@@ -8,7 +8,9 @@
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/dist/{projectRoot}"
+      ],
       "options": {
         "project": "libs/ng-round-slider/ng-package.json"
       },
@@ -21,18 +23,32 @@
         }
       },
       "defaultConfiguration": "production",
-      "styles": ["node_modules/round-slider/dist/roundslider.min.css"]
+      "styles": [
+        "node_modules/round-slider/dist/roundslider.min.css"
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/ng-round-slider/jest.config.ts"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/ng-round-slider/**/*.ts",
+          "libs/ng-round-slider/**/*.html",
+          "libs/ng-round-slider/**/*.mdx",
+          "libs/ng-round-slider/**/*.json"
+        ]
+      }
     },
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
@@ -41,7 +57,9 @@
         "configDir": "libs/ng-round-slider/.storybook",
         "browserTarget": "ng-round-slider:build-storybook",
         "compodoc": false,
-        "styles": ["node_modules/round-slider/dist/roundslider.min.css"]
+        "styles": [
+          "node_modules/round-slider/dist/roundslider.min.css"
+        ]
       },
       "configurations": {
         "ci": {
@@ -51,13 +69,17 @@
     },
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
-      "outputs": ["{options.outputDir}"],
+      "outputs": [
+        "{options.outputDir}"
+      ],
       "options": {
         "outputDir": "dist/storybook/ng-round-slider",
         "configDir": "libs/ng-round-slider/.storybook",
         "browserTarget": "ng-round-slider:build-storybook",
         "compodoc": false,
-        "styles": ["node_modules/round-slider/dist/roundslider.min.css"]
+        "styles": [
+          "node_modules/round-slider/dist/roundslider.min.css"
+        ]
       },
       "configurations": {
         "ci": {

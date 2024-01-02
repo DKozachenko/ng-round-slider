@@ -1,23 +1,49 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChange,
+  SimpleChanges,
+} from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
 import * as $ from 'jquery';
 import 'round-slider';
 import { DEFAULT_PROPERTIES_VALUES } from '@constants';
-import { IBaseEventData, IBaseHandleEventData, IBaseMoveEventData, IBeforeValueChangeEventData, ISliderControl, ISliderElement, ISliderEvents, ISliderOptions, ISliderProperties, IUpdateEventData, IValueChangeEventData } from '@interfaces';
+import {
+  IBaseEventData,
+  IBaseHandleEventData,
+  IBaseMoveEventData,
+  IBeforeValueChangeEventData,
+  ISliderControl,
+  ISliderElement,
+  ISliderEvents,
+  ISliderOptions,
+  ISliderProperties,
+  IUpdateEventData,
+  IValueChangeEventData,
+} from '@interfaces';
 import { SliderId, SliderPropertyValue } from '@types';
 
-/** 
- * Slider component that allows the user to select a value or range of values. 
- * 
+/**
+ * Slider component that allows the user to select a value or range of values.
+ *
  * {@link https://roundsliderui.com/ JQuery Plugin} which implemented as Angular component.
  */
 @Component({
   selector: 'ng-round-slider',
   standalone: true,
   template: '<div [id]="id"></div>',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEvents, 'tooltipFormat'>, OnInit, AfterViewInit, OnChanges, OnDestroy {
+export class NgRoundSliderComponent
+  implements ISliderProperties, Pick<ISliderEvents, 'tooltipFormat'>, OnInit, AfterViewInit, OnChanges, OnDestroy
+{
   /** Slider div id */
   public id!: SliderId;
 
@@ -42,8 +68,9 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    * * pie
    * * custom-half
    * * custom-quarter
-  */
-  @Input({ required: false }) public circleShape: ISliderOptions['circleShape'] = DEFAULT_PROPERTIES_VALUES['circleShape'];
+   */
+  @Input({ required: false }) public circleShape: ISliderOptions['circleShape'] =
+    DEFAULT_PROPERTIES_VALUES['circleShape'];
   /**
    * Sets the disable state or enable state of the control. While the control in the disable state we can't interact with this.
    *
@@ -51,7 +78,8 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    */
   @Input({ required: false }) public disabled: ISliderOptions['disabled'] = DEFAULT_PROPERTIES_VALUES['disabled'];
   /** Enables the editable option of tooltip. When this property set as true, we can change the value by editing the tooltip. */
-  @Input({ required: false }) public editableTooltip: ISliderOptions['editableTooltip'] = DEFAULT_PROPERTIES_VALUES['editableTooltip'];
+  @Input({ required: false }) public editableTooltip: ISliderOptions['editableTooltip'] =
+    DEFAULT_PROPERTIES_VALUES['editableTooltip'];
   /**
    * Indicates the end point of the slider.
    *
@@ -81,13 +109,15 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    *
    * In addition you can make your own handle shape by customizing this. Please check {@link https://roundsliderui.com/demos.html#custom-handle-shape here} for handle customization.
    */
-  @Input({ required: false }) public handleShape: ISliderOptions['handleShape'] = DEFAULT_PROPERTIES_VALUES['handleShape'];
+  @Input({ required: false }) public handleShape: ISliderOptions['handleShape'] =
+    DEFAULT_PROPERTIES_VALUES['handleShape'];
   /**
    * Enables or disables the keyboard functionality.
    *
    * The slider value can be changed through the keyboard by using the arrow keys (Up, Down, Left, Right) and Home, Down keys.
    */
-  @Input({ required: false }) public keyboardAction: ISliderOptions['keyboardAction'] = DEFAULT_PROPERTIES_VALUES['keyboardAction'];
+  @Input({ required: false }) public keyboardAction: ISliderOptions['keyboardAction'] =
+    DEFAULT_PROPERTIES_VALUES['keyboardAction'];
   /**
    * The lineCap property mentions the shape at the end part of the path. This is not applicable for the "full" circle shape, except this all other circle shapes supports lineCap.
    *
@@ -106,7 +136,8 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    *
    * The slider value can be changed through the mouse scrolling.
    */
-  @Input({ required: false }) public mouseScrollAction: ISliderOptions['mouseScrollAction'] = DEFAULT_PROPERTIES_VALUES['mouseScrollAction'];
+  @Input({ required: false }) public mouseScrollAction: ISliderOptions['mouseScrollAction'] =
+    DEFAULT_PROPERTIES_VALUES['mouseScrollAction'];
   /**
    * The radius property indicates the radius of the slider's circle.
    *
@@ -116,7 +147,8 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
   /** This enables the control into the readOnly mode, so we can can't interact with the control when readOnly enabled. */
   @Input({ required: false }) public readOnly: ISliderOptions['readOnly'] = DEFAULT_PROPERTIES_VALUES['readOnly'];
   /** Enables or disables the tooltip inside the slider. */
-  @Input({ required: false }) public showTooltip: ISliderOptions['showTooltip'] = DEFAULT_PROPERTIES_VALUES['showTooltip'];
+  @Input({ required: false }) public showTooltip: ISliderOptions['showTooltip'] =
+    DEFAULT_PROPERTIES_VALUES['showTooltip'];
   /**
    * Indicates the slider type to be render. The available slider types are:
    * * **default**
@@ -158,18 +190,21 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    *
    * Note : This is only applicable for {@link https://roundsliderui.com/document.html#svgMode SVG mode}
    */
-  @Input({ required: false }) public borderWidth: ISliderOptions['borderWidth'] = DEFAULT_PROPERTIES_VALUES['borderWidth'];
+  @Input({ required: false }) public borderWidth: ISliderOptions['borderWidth'] =
+    DEFAULT_PROPERTIES_VALUES['borderWidth'];
   /** Sets the border color of the slider. */
-  @Input({ required: false }) public borderColor: ISliderOptions['borderColor'] = DEFAULT_PROPERTIES_VALUES['borderColor'];
+  @Input({ required: false }) public borderColor: ISliderOptions['borderColor'] =
+    DEFAULT_PROPERTIES_VALUES['borderColor'];
   /** Sets the path color of the slider. */
   @Input({ required: false }) public pathColor: ISliderOptions['pathColor'] = DEFAULT_PROPERTIES_VALUES['pathColor'];
   /** Sets the range color of the slider. */
   @Input({ required: false }) public rangeColor: ISliderOptions['rangeColor'] = DEFAULT_PROPERTIES_VALUES['rangeColor'];
   /** Sets the tooltip color of the slider. */
-  @Input({ required: false }) public tooltipColor: ISliderOptions['tooltipColor'] = DEFAULT_PROPERTIES_VALUES['tooltipColor'];
+  @Input({ required: false }) public tooltipColor: ISliderOptions['tooltipColor'] =
+    DEFAULT_PROPERTIES_VALUES['tooltipColor'];
   /**
    * This event will act as a callback. So you can customize the tooltip template by returning with the custom values here.
-   * 
+   *
    * Check the below demo for better understanding:
    * * {@link https://roundsliderui.com/demos.html#custom-tooltip Custom Tooltip}
    */
@@ -180,23 +215,39 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    *
    * At this point we can change the control's settings. And also this event can be cancellable, so we can prevent the control creation by 'return false'.
    */
-  @Output() public readonly beforeCreate: EventEmitter<IBaseEventData<'beforeCreate'>> = new EventEmitter<IBaseEventData<'beforeCreate'>>();
+  @Output() public readonly beforeCreate: EventEmitter<IBaseEventData<'beforeCreate'>> = new EventEmitter<
+    IBaseEventData<'beforeCreate'>
+  >();
   /** This event triggered after the control creation or initialization. */
-  @Output() public readonly create: EventEmitter<IBaseEventData<'create'>> = new EventEmitter<IBaseEventData<'create'>>();
+  @Output() public readonly create: EventEmitter<IBaseEventData<'create'>> = new EventEmitter<
+    IBaseEventData<'create'>
+  >();
   /** This event triggered when the user starts to drag the handle. */
-  @Output() public readonly start: EventEmitter<IBaseMoveEventData<'start'>> = new EventEmitter<IBaseMoveEventData<'start'>>();
+  /* eslint-disable-next-line @angular-eslint/no-output-native */
+  @Output() public readonly start: EventEmitter<IBaseMoveEventData<'start'>> = new EventEmitter<
+    IBaseMoveEventData<'start'>
+  >();
   /** This event triggered when the user stops from sliding the handle / when releasing the handle. */
-  @Output() public readonly stop: EventEmitter<IBaseMoveEventData<'stop'>> = new EventEmitter<IBaseMoveEventData<'stop'>>();
+  @Output() public readonly stop: EventEmitter<IBaseMoveEventData<'stop'>> = new EventEmitter<
+    IBaseMoveEventData<'stop'>
+  >();
   /**
    * This event will be triggered before the value change happens.
    *
    * And this event can be cancellable. So whenever you want to restrict the slider for particular values at that time this will be useful.
    */
-  @Output() public readonly beforeValueChange: EventEmitter<IBeforeValueChangeEventData> = new EventEmitter<IBeforeValueChangeEventData>();
+  @Output() public readonly beforeValueChange: EventEmitter<IBeforeValueChangeEventData> =
+    new EventEmitter<IBeforeValueChangeEventData>();
   /** This event triggered when the user moving the handle. On each mouse move the drag event will trigger. */
-  @Output() public readonly drag: EventEmitter<IBaseHandleEventData<'drag'>> = new EventEmitter<IBaseHandleEventData<'drag'>>();
+  /* eslint-disable-next-line @angular-eslint/no-output-native */
+  @Output() public readonly drag: EventEmitter<IBaseHandleEventData<'drag'>> = new EventEmitter<
+    IBaseHandleEventData<'drag'>
+  >();
   /** This event triggered when the slider's value gets change. */
-  @Output() public readonly change: EventEmitter<IBaseHandleEventData<'change'>> = new EventEmitter<IBaseHandleEventData<'change'>>();
+  /* eslint-disable-next-line @angular-eslint/no-output-native */
+  @Output() public readonly change: EventEmitter<IBaseHandleEventData<'change'>> = new EventEmitter<
+    IBaseHandleEventData<'change'>
+  >();
   /**
    * This event is the combination of 'drag' and 'change' events.
    *
@@ -204,7 +255,8 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
    */
   @Output() public readonly update: EventEmitter<IUpdateEventData> = new EventEmitter<IUpdateEventData>();
   /** This event is similar to 'update' event, in addition it will trigger even the value was changed through programmatically also. */
-  @Output() public readonly valueChange: EventEmitter<IValueChangeEventData> = new EventEmitter<IValueChangeEventData>();
+  @Output() public readonly valueChange: EventEmitter<IValueChangeEventData> =
+    new EventEmitter<IValueChangeEventData>();
 
   /** Slider element */
   private get sliderElement(): ISliderElement {
@@ -213,15 +265,7 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
 
   /** Slider control */
   private get sliderControl(): ISliderControl | undefined {
-    return <ISliderControl | undefined>this.sliderElement.data("roundSlider");
-  }
-
-  public ngOnInit(): void {
-    this.id = `round-slider-${uuidv4()}`;
-  }
-
-  public ngOnChanges(changes: SimpleChanges): void {
-    this.refresh(changes);
+    return <ISliderControl | undefined>this.sliderElement.data('roundSlider');
   }
 
   /** Initialization */
@@ -265,7 +309,7 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
       change: (data: IBaseHandleEventData<'change'>) => this.change.emit(data),
       update: (data: IUpdateEventData) => this.update.emit(data),
       valueChange: (data: IValueChangeEventData) => this.valueChange.emit(data),
-      tooltipFormat: this.tooltipFormat
+      tooltipFormat: this.tooltipFormat,
     });
   }
 
@@ -284,6 +328,14 @@ export class NgRoundSliderComponent implements ISliderProperties, Pick<ISliderEv
 
       this.setProperty(<keyof ISliderProperties>key, change.currentValue);
     }
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    this.refresh(changes);
+  }
+
+  public ngOnInit(): void {
+    this.id = `round-slider-${uuidv4()}`;
   }
 
   public ngAfterViewInit(): void {

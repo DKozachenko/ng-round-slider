@@ -1,7 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { DEFAULT_PROPERTIES_VALUES } from '@constants';
 import { NgRoundSliderComponent } from './ng-round-slider.component';
-import { PrimaryStory, SliderTypesStory, CircleShapesStory, DifferentThemingAndAppearancesStory, PropertiesStory, EventsStory, CustomTooltipStory, CustomAnimationStory, HandleShapesStory } from './stories';
+import {
+  PrimaryStory,
+  SliderTypesStory,
+  CircleShapesStory,
+  DifferentThemingAndAppearancesStory,
+  PropertiesStory,
+  EventsStory,
+  CustomTooltipStory,
+  CustomAnimationStory,
+  HandleShapesStory,
+} from './stories';
 
 const meta: Meta<NgRoundSliderComponent> = {
   component: NgRoundSliderComponent,
@@ -34,7 +44,7 @@ const meta: Meta<NgRoundSliderComponent> = {
     pathColor: DEFAULT_PROPERTIES_VALUES['pathColor'],
     rangeColor: DEFAULT_PROPERTIES_VALUES['rangeColor'],
     tooltipColor: DEFAULT_PROPERTIES_VALUES['tooltipColor'],
-    tooltipFormat: null
+    tooltipFormat: null,
   },
   argTypes: {
     animation: {
@@ -72,14 +82,14 @@ const meta: Meta<NgRoundSliderComponent> = {
       * custom-half
       * custom-quarter`,
       options: [
-        'full', 
-        'half-top', 
-        'half-bottom', 
-        'half-left', 
-        'half-right', 
-        'quarter-top-left', 
-        'quarter-top-right', 
-        'quarter-bottom-right', 
+        'full',
+        'half-top',
+        'half-bottom',
+        'half-left',
+        'half-right',
+        'quarter-top-left',
+        'quarter-top-right',
+        'quarter-bottom-right',
         'quarter-bottom-left',
         'pie',
         'custom-half',
@@ -141,11 +151,7 @@ const meta: Meta<NgRoundSliderComponent> = {
       * square
   In addition you can make your own handle shape by customizing this. Please check
   <a href="https://roundsliderui.com/demos.html#custom-handle-shape">here</a> for handle customization.`,
-      options: [
-        'round', 
-        'dot', 
-        'square',
-      ],
+      options: ['round', 'dot', 'square'],
       control: {
         type: 'select',
       },
@@ -168,11 +174,7 @@ const meta: Meta<NgRoundSliderComponent> = {
       * square
       * round
       * butt`,
-      options: [
-        'square',
-        'round', 
-        'butt', 
-      ],
+      options: ['square', 'round', 'butt'],
       control: {
         type: 'select',
       },
@@ -234,11 +236,7 @@ const meta: Meta<NgRoundSliderComponent> = {
       * default
       * min-range
       * range`,
-      options: [
-        'default',
-        'min-range', 
-        'range', 
-      ],
+      options: ['default', 'min-range', 'range'],
       control: {
         type: 'select',
       },
@@ -336,8 +334,8 @@ const meta: Meta<NgRoundSliderComponent> = {
       description: `This event will act as a callback. So you can customize the tooltip template by returning 
       with the custom values here. Check the below demo for better understanding:
       <a href="https://roundsliderui.com/demos.html#custom-tooltip">Custom Tooltip</a>`,
-      control: false
-    }
+      control: false,
+    },
   },
 };
 export default meta;

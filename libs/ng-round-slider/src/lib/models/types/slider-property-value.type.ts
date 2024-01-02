@@ -4,12 +4,4 @@ import { LineCap } from './line-cap.type';
 import { SliderType } from './slider-type.type';
 
 /** Possible slider properties values */
-export type SliderPropertyValue =
-  | string
-  | number
-  | boolean
-  | CircleShape
-  | HandleShape
-  | LineCap
-  | SliderType
-  | null;
+export type SliderPropertyValue = string | number | boolean | CircleShape | HandleShape | LineCap | SliderType | null;

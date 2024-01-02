@@ -8,13 +8,13 @@ export const EventsStory: Story = {
       '.wrapper { display: flex; }',
       '.events-log { margin-left: 150px; max-height: 260px; overflow-y: auto; width: 100%; border: 1px solid black; padding-inline: 10px; }',
       '.slider ::ng-deep .rs-focus { box-shadow: 0 0 20px -3px #797979 inset; }',
-      '.slider ::ng-deep .rs-handle-dot { padding: 7px; }'
+      '.slider ::ng-deep .rs-handle-dot { padding: 7px; }',
     ],
     props: {
       events: [],
       logEvent: (events: IBaseEventData<string>[], event: IBaseEventData<string>) => {
         events.push(event);
-      }
+      },
     },
     template: `
       <div class="wrapper">

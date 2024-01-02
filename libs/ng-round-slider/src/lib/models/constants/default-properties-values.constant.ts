@@ -29,4 +29,4 @@ export const DEFAULT_PROPERTIES_VALUES: ISliderProperties = {
   pathColor: null,
   rangeColor: null,
   tooltipColor: null,
-}
+};

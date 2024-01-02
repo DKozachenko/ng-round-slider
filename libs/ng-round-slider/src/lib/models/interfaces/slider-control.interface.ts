@@ -4,12 +4,12 @@ import { ISliderProperties } from './slider-properties.interface';
 
 /** Slider control */
 export interface ISliderControl {
-  /** 
+  /**
    * Setter or getter of specific property.
-   * 
+   *
    * {@link https://roundsliderui.com/document.html#how-to-use-options Docs}
    */
-  option: (property: keyof ISliderProperties, value?: SliderPropertyValue) => void | SliderPropertyValue,
+  option: (property: keyof ISliderProperties, value?: SliderPropertyValue) => void | SliderPropertyValue;
   /**
    * This method is used to set the value to the slider control.
    *
@@ -17,7 +17,7 @@ export interface ISliderControl {
    * * **setValue(value)** : This will set the corresponding value to the slider handle.
    * * **setValue(value, index)** : This is only applicable for range slider, which sets the value to the corresponding handle.Here the possible value of index is 1 or 2 only.
    */
-  setValue: (value: number | string, index?: number) => void,
+  setValue: (value: number | string, index?: number) => void;
   /**
    * This method is used to get the value from the slider control.
    *
@@ -25,7 +25,7 @@ export interface ISliderControl {
    * * **getValue()** : Without any parameter, it will return the current slider value.
    * * **getValue(index)** : This is only applicable for range slider, which returns the value of the corresponding handle. Here the possible value of index is 1 or 2 only.
    */
-  getValue: (index?: number) => ISliderOptions['value'],
+  getValue: (index?: number) => ISliderOptions['value'];
   /**
    * This method is used to refresh the tooltip position, when it is misaligned.
    *
@@ -35,23 +35,23 @@ export interface ISliderControl {
    * * More likely, with the above mentioned situation, when you are using tooltip as custom template then only you may need to think about this.
    * Rest of the times you don't need to worry about this.
    */
-  refreshTooltip: () => void,
+  refreshTooltip: () => void;
   /**
    * Disables the slider control.
    *
    * Note : This method does not accept any parameters.
    */
-  disable: () => void,
+  disable: () => void;
   /**
    * Enables the slider control.
    *
    * Note : This method does not accept any parameters.
    */
-  enable: () => void,
+  enable: () => void;
   /**
    * Destroys the slider control and reverts the control element to the initial state.
    *
    * Note : This method does not accept any parameters.
    */
-  destroy: () => void
+  destroy: () => void;
 }
