@@ -1,4 +1,4 @@
-import { IBaseMoveEventData } from '@interfaces';
+import { IBaseMoveEventData } from '../../../models/interfaces';
 import { Story } from '../ng-round-slider.component.stories';
 
 export const HandleShapesStory: Story = {

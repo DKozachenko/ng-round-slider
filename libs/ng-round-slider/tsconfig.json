@@ -7,15 +7,8 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@interfaces": ["libs/ng-round-slider/src/lib/models/interfaces/index.ts"],
-      "@constants": ["libs/ng-round-slider/src/lib/models/constants/index.ts"],
-      "@types": ["libs/ng-round-slider/src/lib/models/types/index.ts"]
-    }
+    "noFallthroughCasesInSwitch": true
   },
-  "files": [],
-  "include": [],
   "references": [
     {
       "path": "./tsconfig.lib.json"

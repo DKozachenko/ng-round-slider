@@ -6,7 +6,7 @@ import {
   IBeforeValueChangeEventData,
   IUpdateEventData,
   IValueChangeEventData,
-} from '@interfaces';
+} from '../../../models/interfaces';
 import { Story } from '../ng-round-slider.component.stories';
 
 export const PrimaryStory: Story = {

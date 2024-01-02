@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { DEFAULT_PROPERTIES_VALUES } from '@constants';
+import { DEFAULT_PROPERTIES_VALUES } from '../../models/constants';
 import { NgRoundSliderComponent } from './ng-round-slider.component';
 import {
   PrimaryStory,
@@ -69,7 +69,7 @@ const meta: Meta<NgRoundSliderComponent> = {
       name: 'circleShape',
       defaultValue: DEFAULT_PROPERTIES_VALUES['circleShape'],
       description: `Indicates the circle shape to be render. The available circle shapes are:
-      * full, 
+      * full
       * half-top
       * half-bottom
       * half-left

@@ -1,11 +1,9 @@
 {
   "name": "ng-round-slider",
-  "version": "0.0.1",
+  "version": "0.0.8",
   "peerDependencies": {
     "@angular/core": "^17.0.0",
-    "round-slider": "^1.6.1"
-  },
-  "dependencies": {
+    "round-slider": "^1.6.1",
     "uuid": "^9.0.1",
     "jquery": "^3.7.1"
   },

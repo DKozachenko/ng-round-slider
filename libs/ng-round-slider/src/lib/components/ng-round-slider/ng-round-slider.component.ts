@@ -10,11 +10,12 @@ import {
   Output,
   SimpleChange,
   SimpleChanges,
+  ViewEncapsulation,
 } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
-import * as $ from 'jquery';
+import $ from 'jquery';
 import 'round-slider';
-import { DEFAULT_PROPERTIES_VALUES } from '@constants';
+import { DEFAULT_PROPERTIES_VALUES } from '../../models/constants';
 import {
   IBaseEventData,
   IBaseHandleEventData,
@@ -27,8 +28,8 @@ import {
   ISliderProperties,
   IUpdateEventData,
   IValueChangeEventData,
-} from '@interfaces';
-import { SliderId, SliderPropertyValue } from '@types';
+} from '../../models/interfaces';
+import { SliderId, SliderPropertyValue } from '../../models/types';
 
 /**
  * Slider component that allows the user to select a value or range of values.
@@ -39,7 +40,9 @@ import { SliderId, SliderPropertyValue } from '@types';
   selector: 'ng-round-slider',
   standalone: true,
   template: '<div [id]="id"></div>',
+  styleUrls: ['../../../../../../node_modules/round-slider/dist/roundslider.min.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class NgRoundSliderComponent
   implements ISliderProperties, Pick<ISliderEvents, 'tooltipFormat'>, OnInit, AfterViewInit, OnChanges, OnDestroy

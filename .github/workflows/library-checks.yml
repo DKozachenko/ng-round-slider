@@ -18,16 +18,6 @@ jobs:
     - name: Run linter
       run: npm run slider:lint
 
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Get repository code
-  #     uses: actions/checkout@v4
-  #   - name: Get dependencies
-  #     run: npm ci
-  #   - name: Run build
-  #     run: npm run slider:build
-
   build-storybook:
     runs-on: ubuntu-latest
     steps:
@@ -37,3 +27,13 @@ jobs:
       run: npm ci
     - name: Run build storybook
       run: npm run slider:build-storybook
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get repository code
+      uses: actions/checkout@v4
+    - name: Get dependencies
+      run: npm ci
+    - name: Run build
+      run: npm run slider:build

@@ -22,10 +22,7 @@
           "tsConfig": "libs/ng-round-slider/tsconfig.lib.json"
         }
       },
-      "defaultConfiguration": "production",
-      "styles": [
-        "node_modules/round-slider/dist/roundslider.min.css"
-      ]
+      "defaultConfiguration": "production"
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -56,10 +53,7 @@
         "port": 4400,
         "configDir": "libs/ng-round-slider/.storybook",
         "browserTarget": "ng-round-slider:build-storybook",
-        "compodoc": false,
-        "styles": [
-          "node_modules/round-slider/dist/roundslider.min.css"
-        ]
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -76,10 +70,7 @@
         "outputDir": "dist/storybook/ng-round-slider",
         "configDir": "libs/ng-round-slider/.storybook",
         "browserTarget": "ng-round-slider:build-storybook",
-        "compodoc": false,
-        "styles": [
-          "node_modules/round-slider/dist/roundslider.min.css"
-        ]
+        "compodoc": false
       },
       "configurations": {
         "ci": {
