@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { IBaseEventData, NgRoundSliderComponent } from 'ng-round-slider';
 
 @Component({
@@ -13,11 +13,14 @@ import { IBaseEventData, NgRoundSliderComponent } from 'ng-round-slider';
 export class EventsComponent {
   public events: IBaseEventData<string>[] = [];
 
+  private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+
   public trackByFunc(index: number): number {
     return index;
   }
 
   public logEvent(event: IBaseEventData<string>): void {
     this.events.push(event);
+    this.cdr.detectChanges();
   }
 }
