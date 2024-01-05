@@ -1,0 +1,32 @@
+<div class="container">
+  <a href="https://roundsliderui.com/demos.html#customizations">Customizations</a>
+
+  <p>Due to the flexibility of roundSlider, the user can do any customization based on their requirement. Here, some
+    examples for the basic customization.</p>
+
+  <a href="https://roundsliderui.com/demos.html#custom-tooltip">Custom Tooltip</a>
+
+  <p>The control provides the callback function for the tooltip value. By using that callback function we can customize
+    the tooltip like any format.</p>
+
+  <div class="wrapper">
+    <ng-round-slider class="slider1" sliderType="min-range" circleShape="custom-quarter" handleShape="dot" [min]="0"
+      [max]="11" [value]="7" [startAngle]="45" [editableTooltip]="false" [radius]="300" [width]="20"
+      [tooltipFormat]="formatting1"></ng-round-slider>
+
+    <ng-round-slider class="slider2" handleSize="+14" [value]="50" [radius]="90" [width]="4"
+      [tooltipFormat]="formatting2"></ng-round-slider>
+  </div>
+
+  <a href="https://roundsliderui.com/demos.html#custom-animation">Custom Animation</a>
+
+  <p>As roundSlider uses the CSS3 transition for animations, so we can use any other transition styles for different
+    animation effects.
+
+    To use different animation just enought to change the CSS property of "transition-timing-function". In the below
+    example you can see, how to use the custom animation. To know more about "transition-timing-function", check <a
+      href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function">here</a>.
+  </p>
+
+  <ng-round-slider class="slider" sliderType="min-range" [value]="40" [radius]="90" [width]="16"></ng-round-slider>
+</div>

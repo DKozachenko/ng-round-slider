@@ -17,12 +17,7 @@
     ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@ng-round-slider": [
-        "libs/ng-round-slider/src/index.ts"
-      ]
-    }
+    "baseUrl": "."
   },
   "exclude": [
     "node_modules",

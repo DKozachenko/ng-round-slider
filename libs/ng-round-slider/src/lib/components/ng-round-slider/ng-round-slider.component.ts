@@ -40,6 +40,7 @@ import { SliderId, SliderPropertyValue } from '../../models/types';
   selector: 'ng-round-slider',
   standalone: true,
   template: '<div [id]="id"></div>',
+  /** Direct injection round slider styles */
   styleUrls: ['../../../../../../node_modules/round-slider/dist/roundslider.min.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

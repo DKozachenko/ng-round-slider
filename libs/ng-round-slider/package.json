@@ -1,6 +1,30 @@
 {
   "name": "ng-round-slider",
-  "version": "0.0.8",
+  "version": "1.0.0",
+  "description": "Angular library with implementation of Round Slider JQuery Plugin",
+  "keywords": [
+    "angular",
+    "library",
+    "jquery",
+    "round slider",
+    "slider",
+    "jquery round slider",
+    "angular slider"
+  ],
+  "author": {
+    "name": "Diana Kozachenko",
+    "email": "kozachenkodiana03@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DKozachenko/ng-round-slider"
+  },
+  "bugs": {
+    "url": "https://github.com/DKozachenko/ng-round-slider/issues",
+    "email": "kozachenkodiana03@gmail.com"
+  },
+  "homepage": "https://github.com/DKozachenko/ng-round-slider/blob/develop/libs/ng-round-slider/README.md",
+  "license": "ISC",
   "peerDependencies": {
     "@angular/core": "^17.0.0",
     "round-slider": "^1.6.1",

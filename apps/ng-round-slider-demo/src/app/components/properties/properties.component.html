@@ -1,0 +1,21 @@
+<div class="container">
+  <a href="https://roundsliderui.com/demos.html#properties">Properties</a>
+
+  <p>The following demos shows the basic usage of some properties.</p>
+
+  <div class="wrapper">
+    <ng-round-slider sliderType="min-range" [min]="1000" [max]="10000" [step]="1000" [value]="3000"></ng-round-slider>
+
+    <ng-round-slider handleShape="dot" handleSize="+10" [max]="10" [step]="0.1" [width]="10" [radius]="70"
+      [value]="6"></ng-round-slider>
+
+    <ng-round-slider handleSize="34,10" [value]="50"></ng-round-slider>
+
+    <ng-round-slider sliderType="min-range" handleShape="square" [editableTooltip]="false"
+      [value]="30"></ng-round-slider>
+
+    <ng-round-slider endAngle="+225" [startAngle]="90" [value]="45"></ng-round-slider>
+
+    <ng-round-slider [mouseScrollAction]="true" [value]="15"></ng-round-slider>
+  </div>
+</div>

@@ -1,7 +1,6 @@
 {
   "name": "@ng-round-slider/source",
   "version": "0.0.0",
-  "license": "MIT",
   "scripts": {
     "slider:storybook": "nx run ng-round-slider:storybook",
     "slider:build-storybook": "nx run ng-round-slider:build-storybook",
@@ -9,6 +8,8 @@
     "slider:lint": "nx run ng-round-slider:lint",
     "slider:publish": "npm publish dist/libs/ng-round-slider",
     "demo:serve": "nx run ng-round-slider-demo:serve",
+    "demo:build": "nx run ng-round-slider-demo:build",
+    "demo:lint": "nx run ng-round-slider-demo:lint",
     "prepare": "husky install"
   },
   "private": true,
@@ -23,6 +24,7 @@
     "@angular/router": "~17.0.0",
     "@nx/angular": "17.2.7",
     "jquery": "^3.7.1",
+    "ng-round-slider": "^1.0.0",
     "round-slider": "^1.6.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

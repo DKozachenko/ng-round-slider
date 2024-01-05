@@ -4,7 +4,7 @@ export const PropertiesStory: Story = {
   name: 'Properties',
   render: () => ({
     styles: [
-      '.wrapper { display: grid; gap: 15px; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr);}',
+      '.wrapper { display: grid; gap: 15px; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); }',
     ],
     template: `
       <div class="wrapper">

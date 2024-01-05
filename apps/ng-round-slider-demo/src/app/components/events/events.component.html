@@ -1,0 +1,15 @@
+<div class="container">
+  <a href="https://roundsliderui.com/demos.html#events">Events</a>
+
+  <p>The following demo shows the basic usage of the events.</p>
+
+  <div class="wrapper">
+    <ng-round-slider class="slider" sliderType="range" handleShape="dot" value="20,45" [radius]="130" [width]="25"
+      (beforeCreate)="logEvent($event)" (create)="logEvent($event)" (start)="logEvent($event)" (stop)="logEvent($event)"
+      (drag)="logEvent($event)" (change)="logEvent($event)"></ng-round-slider>
+
+    <div class="events-log">
+      <p *ngFor="let event of events; trackBy: trackByFunc"><b>{{ event.type }}</b> event triggered</p>
+    </div>
+  </div>
+</div>

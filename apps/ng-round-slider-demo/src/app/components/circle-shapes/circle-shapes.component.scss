@@ -1,0 +1,12 @@
+.container {
+  padding: 20px;
+  border: 1px solid darkgray;
+  border-radius: 20px;
+}
+
+.wrapper {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}

@@ -61,8 +61,6 @@ export const HandleShapesStory: Story = {
           [width]="16"
           [value]="75"
         ></ng-round-slider>
-
-        
       </div>
     `,
   }),

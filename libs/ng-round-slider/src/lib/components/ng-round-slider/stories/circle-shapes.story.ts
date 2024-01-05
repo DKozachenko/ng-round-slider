@@ -4,7 +4,7 @@ export const CircleShapesStory: Story = {
   name: 'Various Circle Shapes',
   render: () => ({
     styles: [
-      '.wrapper { display: grid; gap: 15px; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr);}',
+      '.wrapper { display: grid; gap: 15px; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); }',
     ],
     template: `
       <div class="wrapper">
