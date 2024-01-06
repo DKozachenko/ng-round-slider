@@ -392,14 +392,14 @@ export class NgRoundSliderComponent
    * * **getValue()** : Without any parameter, it will return the current slider value.
    * * **getValue(index)** : This is only applicable for range slider, which returns the value of the corresponding handle. Here the possible value of index is 1 or 2 only.
    */
-  public getValue(index?: number): void {
+  public getValue(index?: number): ISliderOptions['value'] | undefined {
     const control: ISliderControl | undefined = this.sliderControl;
 
     if (!control) {
       return;
     }
 
-    control.getValue(index);
+    return control.getValue(index);
   }
 
   /**

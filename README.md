@@ -98,6 +98,14 @@ npm i
 npm run demo:lint
 ```
 
+## Test
+
+* `ng-round-slider`: 
+```bash
+npm i
+npm run slider:test
+```
+
 ## Contributing
 
 If you have any suggestions, ideas, or problems, feel free to create an issue or PR.

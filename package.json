@@ -6,6 +6,7 @@
     "slider:build-storybook": "nx run ng-round-slider:build-storybook",
     "slider:build": "nx run ng-round-slider:build",
     "slider:lint": "nx run ng-round-slider:lint",
+    "slider:test": "nx run ng-round-slider:test",
     "slider:publish": "npm publish dist/libs/ng-round-slider",
     "demo:serve": "nx run ng-round-slider-demo:serve",
     "demo:build": "nx run ng-round-slider-demo:build",
